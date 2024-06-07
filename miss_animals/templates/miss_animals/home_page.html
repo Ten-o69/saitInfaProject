@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <title>Пропавшие животные</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="shortcut icon" href="{% static 'logo.png' %}" type="image/png">
+</head>
+<body>
+
+<header>
+  <img src="{% static 'logo.png' %}" alt="Логотип сайта" style="width: 100px; height: 100px; border-radius: 50%; margin: 0 auto;">
+  <h1>Пропавшие животные</h1>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="{% url 'home' %}">Главная</a></li>
+    <li><a href="{% url 'search' %}">Поиск</a></li>
+    <li><a href="registration.html">Регистрация</a></li>
+    <li><a href="account.html">Личный кабинет</a></li>
+    <li><a href="add-listing.html">Добавить объявление</a></li>
+    <li><a href="reviews.html">Отзывы</a></li>
+  </ul>
+</nav>
+
+<main>
+  <h1>Добро пожаловать на сайт "Пропавшие животные"!</h1>
+  <p>На этом сайте вы можете найти информацию о попавших животных, разместить объявление zо пропавшем или найденном животном, а также оставить отзыв о работе сайта.</p>
+  <p>Мы надеемся, что этот сайт поможет вам найти своего потерянного питомца или найти дом для бездомного животного.</p>
+
+  <h2>Факты о компании и сайте</h2>
+
+  <div class="facts">
+    <div class="fact">
+      <p>Помогли найти более 500 животных.</p>
+    </div>
+    <div class="fact">
+      <p>Помогаем вернуть питомцев к хозяевам более трех лет.</p>
+    </div>
+    <div class="fact">
+      <p>Все услуги бесплатны.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>Copyright &copy; 2024 Сайт "Пропавшие животные"</p>
+</footer>
+
+</body>
+</html>

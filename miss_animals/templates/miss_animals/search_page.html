@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <title>Поиск животного</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="shortcut icon" href="{% static 'logo.png' %}" type="image/png">
+</head>
+<body>
+
+<header>
+  <img src="{% static 'logo.png' %}" alt="Логотип сайта" style="width: 100px; height: 100px; border-radius: 50%; margin: 0 auto;">
+  <h1>Пропавшие животные</h1>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="{% url 'home' %}">Главная</a></li>
+    <li><a href="{% url 'search' %}">Поиск</a></li>
+    <li><a href="registration.html">Регистрация</a></li>
+    <li><a href="account.html">Личный кабинет</a></li>
+    <li><a href="add-listing.html">Добавить объявление</a></li>
+    <li><a href="reviews.html">Отзывы</a></li>
+  </ul>
+</nav>
+
+<main>
+  <h1>Поиск животного</h1>
+
+  <form action="search-results.html">
+    <label for="animal-type">Вид животного:</label>
+    <input type="text" id="animal-type" name="animal-type">
+
+    <input type="submit" value="Найти">
+  </form>
+
+</main>
+
+<footer>
+  <p>Copyright &copy; 2024 Сайт "Пропавшие животные"</p>
+</footer>
+
+</body>
+</html>

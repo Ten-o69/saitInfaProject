@@ -25,13 +25,12 @@
 </nav>
 
 <main>
-  <h1>Поиск животного</h1>
+  <h1>Добавление объявления о найденном животном</h1>
 
-  <form action="search-results.html">
-    <label for="animal-type">Вид животного:</label>
-    <input type="text" id="animal-type" name="animal-type">
-
-    <input type="submit" value="Найти">
+  <form method="post" name="add_advert">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Добавить</button>
   </form>
 
 </main>

@@ -1,68 +1,40 @@
-<!DOCTYPE html>
-{% load static %}
-<html>
-<head>
-  <title>Пропавшие животные</title>
-  <link rel="stylesheet" href="{% static 'style.css' %}">
-  <link rel="shortcut icon" href="{% static 'logo.png' %}" type="image/png">
-</head>
-<body>
+{% extends 'base.html'%}
 
-<header>
-  <img src="{% static 'logo.png' %}" alt="Логотип сайта" style="width: 100px; height: 100px; border-radius: 50%; margin: 0 auto;">
-  <h1>Пропавшие животные</h1>
-</header>
+{% block title %}
+Пропавшие животные
+{% endblock %}
 
-<nav>
-  <ul>
-    <li><a href="{% url 'home' %}">Главная</a></li>
-    <li><a href="{% url 'search' %}">Поиск</a></li>
-    <li><a href="registration.html">Регистрация</a></li>
-    <li><a href="account.html">Личный кабинет</a></li>
-    <li><a href="{% url 'add_advert' %}">Добавить объявление</a></li>
-    <li><a href="reviews.html">Отзывы</a></li>
-  </ul>
-</nav>
+{% block content %}
+<h1>Добро пожаловать на сайт "Пропавшие животные"!</h1>
+<p>На этом сайте вы можете найти информацию о пропавших животных, разместить объявление
+  о пропавшем или найденном животном, а также оставить отзыв о работе сайта.</p>
+<p>Мы надеемся, что этот сайт поможет вам найти своего потерянного питомца или найти дом для бездомного животного.</p>
 
-<main>
-  <h1>Добро пожаловать на сайт "Пропавшие животные"!</h1>
-  <p>На этом сайте вы можете найти информацию о пропавших животных, разместить объявление
-    о пропавшем или найденном животном, а также оставить отзыв о работе сайта.</p>
-  <p>Мы надеемся, что этот сайт поможет вам найти своего потерянного питомца или найти дом для бездомного животного.</p>
-
-  <h1>Найденные животные</h1>
-  <div class="scroll-box">
-    {% for found_animal_card in found_animal_cards %}
-    <div class="item">
-      <img src="{% static 'test.jpg' %}" alt="unknown image" style="width: 250px; height: 250px;">
-      <p><strong>Район:</strong> {{ found_animal_card.area }}</p>
-      <p><strong>Место:</strong> {{ found_animal_card.place }}</p>
-      <p><strong>Контакт:</strong> {{ found_animal_card.contact }}</p>
-      <p><strong>Дата:</strong> {{ found_animal_card.date }}</p>
-      <p><strong>Добавлено:</strong> {{ found_animal_card.added }}</p>
-    </div>
-    {% endfor %}
+<h1>Найденные животные</h1>
+<div class="scroll-box">
+  {% for found_animal_card in found_animal_cards %}
+  <div class="item">
+    <img src="{{ found_animal_card.image.url }}" alt="unknown image" style="width: 400px; height: 250px;">
+    <p><strong>Район:</strong> {{ found_animal_card.area }}</p>
+    <p><strong>Место:</strong> {{ found_animal_card.place }}</p>
+    <p><strong>Контакт:</strong> {{ found_animal_card.contact }}</p>
+    <p><strong>Дата:</strong> {{ found_animal_card.date }}</p>
+    <p><strong>Добавлено:</strong> {{ found_animal_card.added }}</p>
   </div>
+  {% endfor %}
+</div>
 
-  <h2>Факты о компании и сайте</h2>
+<h2>Факты о компании и сайте</h2>
 
-  <div class="facts">
-    <div class="fact">
-      <p>Помогли найти более 500 животных.</p>
-    </div>
-    <div class="fact">
-      <p>Помогаем вернуть питомцев к хозяевам более трех лет.</p>
-    </div>
-    <div class="fact">
-      <p>Все услуги бесплатны.</p>
-    </div>
+<div class="facts">
+  <div class="fact">
+    <p>Помогли найти более 500 животных.</p>
   </div>
-
-</main>
-
-<footer>
-  <p>Copyright &copy; 2024 Сайт "Пропавшие животные"</p>
-</footer>
-
-</body>
-</html>
+  <div class="fact">
+    <p>Помогаем вернуть питомцев к хозяевам более трех лет.</p>
+  </div>
+  <div class="fact">
+    <p>Все услуги бесплатны.</p>
+  </div>
+</div>
+{% endblock %}

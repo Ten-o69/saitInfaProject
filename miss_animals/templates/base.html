@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <title>{% block title %}My Website{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="shortcut icon" href="{% static 'logo.png' %}" type="image/png">
+</head>
+<body>
+
+<header>
+  <img src="{% static 'logo.png' %}" alt="Логотип сайта" style="width: 100px; height: 100px; border-radius: 50%; margin: 0 auto;">
+  <h1>Пропавшие животные</h1>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="{% url 'home' %}">Главная</a></li>
+    <li><a href="{% url 'search' %}">Поиск</a></li>
+    <li><a href="{% url 'register' %}">Регистрация</a></li>
+    <li><a href="{% url 'account'%}">Личный кабинет</a></li>
+    <li><a href="{% url 'add_advert' %}">Добавить объявление</a></li>
+    <li><a href="">Отзывы</a></li>
+  </ul>
+</nav>
+
+<main>
+  {% block content %}
+  <!-- Основное содержание будет вставляться здесь -->
+  {% endblock %}
+</main>
+
+<footer>
+  <p>Телефон: +7 (928) 138-95-31. E-mail: <a href="234iskateli234@gmail.com">234iskateli234@gmail.com</a></p>
+  <p>Copyright &copy; 2024 Сайт "Пропавшие животные"</p>
+</footer>
+
+</body>
+</html>

@@ -1,43 +1,15 @@
-<!DOCTYPE html>
-{% load static %}
-<html>
-<head>
-  <title>Поиск животного</title>
-  <link rel="stylesheet" href="{% static 'style.css' %}">
-  <link rel="shortcut icon" href="{% static 'logo.png' %}" type="image/png">
-</head>
-<body>
+{% extends "base.html" %}
 
-<header>
-  <img src="{% static 'logo.png' %}" alt="Логотип сайта" style="width: 100px; height: 100px; border-radius: 50%; margin: 0 auto;">
-  <h1>Пропавшие животные</h1>
-</header>
+{% block title %}
+Добавление объявления
+{% endblock %}
 
-<nav>
-  <ul>
-    <li><a href="{% url 'home' %}">Главная</a></li>
-    <li><a href="{% url 'search' %}">Поиск</a></li>
-    <li><a href="registration.html">Регистрация</a></li>
-    <li><a href="account.html">Личный кабинет</a></li>
-    <li><a href="{% url 'add_advert' %}">Добавить объявление</a></li>
-    <li><a href="reviews.html">Отзывы</a></li>
-  </ul>
-</nav>
+{% block content %}
+<h1>Добавление объявления о найденном животном</h1>
 
-<main>
-  <h1>Добавление объявления о найденном животном</h1>
-
-  <form method="post" name="add_advert">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Добавить</button>
-  </form>
-
-</main>
-
-<footer>
-  <p>Copyright &copy; 2024 Сайт "Пропавшие животные"</p>
-</footer>
-
-</body>
-</html>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Добавить</button>
+</form>
+{% endblock %}

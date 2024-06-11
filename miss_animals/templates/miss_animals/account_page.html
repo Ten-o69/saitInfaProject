@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Личный кабинет
+{% endblock %}
+
+{% block content %}
+    <h1>Личный кабинет</h1>
+    <p><strong>E-mail:</strong> {{ user.email }} <button onclick="location.href=''">Изменить</button></p>
+    <p><strong>Имя:</strong> {{ user.first_name }}</p>
+    <p><strong>Фамилия:</strong> {{ user.last_name }}</p>
+    <p><strong>Телефон:</strong> {{ user.profile.phone }} <button onclick="location.href=''">Изменить</button></p>
+    <p><strong>Количество добавленных объявлений:</strong> {{ ad_count }}</p>
+    <p><strong>Количество животных, которые вернулись к хозяевам:</strong> {{ ads_found }}</p>
+    <p><strong>Дата регистрации пользователя:</strong> {{ registration_date }}</p>
+    <p><strong>Количество дней, прошедших с момента регистрации на сайте:</strong> {{ days_since_registration }}</p>
+
+    <h2>Объявления</h2>
+    {% for status, ads in grouped_ads.items %}
+        <h3>{{ status }}</h3>
+        <div class="ads-group {{ status }}">
+            {% for ad in ads %}
+                <div class="ad">
+                    <img src="{{ ad.photo.url }}" alt="Фото животного">
+                    <p><strong>Район:</strong> {{ ad.area }}</p>
+                    <p><strong>Дата добавления:</strong> {{ ad.date_added }}</p>
+                    <p><strong>Дополнительная информация:</strong> {{ ad.description }}</p>
+                    {% if ad.brand %}
+                        <p><strong>Клеймо:</strong> {{ ad.brand }}</p>
+                    {% endif %}
+                    {% if ad.is_active or ad.is_on_moderation %}
+                        <button onclick="location.href='{% url 'edit_ad' ad.id %}'">Редактировать</button>
+                        <button onclick="location.href='{% url 'delete_ad' ad.id %}'">Удалить</button>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock %}
